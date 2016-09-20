@@ -1,0 +1,23 @@
+{
+  "name": "canvasStarter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "autoreload-server -w -p 8081  -b index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wordyallen/canvasStarter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wordyallen/canvasStarter/issues"
+  },
+  "homepage": "https://github.com/wordyallen/canvasStarter#readme",
+  "devDependencies": {
+    "simple-autoreload-server": "^0.1.7"
+  }
+}

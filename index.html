@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title
+</head>
+<style>
+    #myCanvas {
+        border:1px solid black;
+    }
+
+</style>
+
+
+<body onload="init()">
+  <h1>Canvas Api</h1>
+
+  <canvas id="myCanvas" width="800" height="600">
+      Fallback content that will be displayed in case the web browser
+      does not support the canvas tag or in case scripting
+      is disabled.
+  </canvas>
+  <button onclick="startAnimation()">Start animation</button>
+  <button onclick="stopAnimation()">Stop animation</button>
+
+  <script type="text/javascript">
+  // Mis variables
+  let canvas, ctx;
+  let monsterX= 100, monsterY=100, speed =6;
+
+  // Funcione inicial
+  const init = () =>{
+    canvas = document.getElementById('myCanvas')
+    ctx = canvas.getContext('2d')
+
+  }
+  // Empieza la animacion
+  const startAnimation = () =>{
+    id = requestAnimationFrame(animationLoop)
+  }
+  // Detiene la animacion
+  const stopAnimation = () =>{
+    if(id){
+      cancelAnimationFrame(id);
+    }
+  }
+  // Animacion recursiva
+  const animationLoop = (timeStamp) =>{
+    // Limpiar
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Dibujar el Monstruo
+    drawMonster(monsterX, monsterY)
+    // Moverlo
+    monsterX += speed;
+
+    id = requestAnimationFrame(animationLoop);
+  }
+
+  // Dibuja mi Monstruo
+  const drawMonster = (x,y)=>{
+    //head
+    ctx.save()
+    ctx.fillStyle = 'lightgreen';
+    ctx.fillRect(x,y,200,200);
+    //eyes
+    ctx.fillStyle = 'red';
+    ctx.fillRect(x+35, y+35, 20, 30);
+    ctx.fillRect(x+135, y+35, 20, 30);
+    //pupil
+    ctx.fillStyle = 'yellow';
+    ctx.fillRect(x+40, y+40, 10, 10);
+    ctx.fillRect(x+140, y+40, 10, 10);
+    //nose
+    ctx.fillStyle='black';
+    ctx.fillRect(x+90,y+70,20,80);
+    ctx.fillStyle='purple';
+    ctx.fillRect(x+60,y+165,80,20);
+    ctx.restore();
+  }
+
+  </script>
+
+</body>
+</html>
